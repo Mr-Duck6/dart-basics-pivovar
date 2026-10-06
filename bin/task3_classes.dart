@@ -46,6 +46,18 @@ void main() {
   student2.addGrade(course1.id, 50.5);
 
   runUniversityDemo(university1, course1);
+
+  print('Студент 1: ${student1.firstName} ${student1.lastName}');
+
+  for (var student in university1.students) {
+    print('${student.firstName} ${student.lastName} (ID: ${student.id})');
+  }
+
+  for (var prof in university1.professors) {
+    print('${prof.firstName} ${prof.lastName} - ${prof.department}');
+  }
+
+  runUniversityDemo(university1, course1);
 }
 
 void runUniversityDemo(University university, Course course) {

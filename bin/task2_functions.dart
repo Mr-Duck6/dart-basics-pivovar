@@ -68,7 +68,7 @@ void testFunctionalProgramming() {
   print(evenNumbers);
 
   var multiplied = numbers.map((n) => n * 10).toList();
-  print('Map (помножені на 10): $multiplied');
+  print('Map: $multiplied');
 
   int totalSum = numbers.fold(
     0,
@@ -85,7 +85,7 @@ void testFunctionalProgramming() {
 
   var addFiveAndOuter = makeAdder(5);
   int result = addFiveAndOuter(20);
-  print('Результат замикання (Closure): $result');
+  print('Результат замикання: $result');
 }
 
 int fibonacci(int n) {

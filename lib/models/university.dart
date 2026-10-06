@@ -17,7 +17,7 @@ abstract class Person {
   String get fullName;
   int get age;
   String get role;
-}
+} 
 
 class Professor extends Person {
   final String department;
