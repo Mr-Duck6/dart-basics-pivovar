@@ -1,30 +1,33 @@
 # Практична робота 4: Основи мови Dart
 
 ## Завдання 1: Налаштування проекту та основи синтаксису
+
 ### Опис структури проекту
+
 Була створена структура проекту, яка містить:
 
 ![alt text](image.png)
 
-* **`README.md`**  опис завдань, інструкції.
-* **`pubspec.yaml`**  технічне налаштування проекту.
-* **`bin/`**  містить завдання 1-5:
-  * `task1_variables.dart`  завдання 1.
-  * `task2_functions.dart`  завдання 2.
-  * `task3_classes.dart`  завдання 3.
-  * `task4_collections.dart`  завдання 4.
-  * `task5_async.dart`  завдання 5.
-* **`lib/`**  містить папку `models/` та `utils/`:
-  * `models/student.dart`  клас студента.
-  * `models/course.dart`  клас курсів.
-  * `models/university.dart`  клас університету (також містить клас професора та базовий клас людини).
-  * `utils/calculator.dart`  програма калькулятор.
-  * `utils/data_processor.dart`  тестування data processor.
-* **`test/`**  містить тести:
-  * `models_test.dart`  тест 1.
-  * `utils_test.dart`  тест 2.
+- **`README.md`** опис завдань, інструкції.
+- **`pubspec.yaml`** технічне налаштування проекту.
+- **`bin/`** містить завдання 1-5:
+  - `task1_variables.dart` завдання 1.
+  - `task2_functions.dart` завдання 2.
+  - `task3_classes.dart` завдання 3.
+  - `task4_collections.dart` завдання 4.
+  - `task5_async.dart` завдання 5.
+- **`lib/`** містить папку `models/` та `utils/`:
+  - `models/student.dart` клас студента.
+  - `models/course.dart` клас курсів.
+  - `models/university.dart` клас університету (також містить клас професора та базовий клас людини).
+  - `utils/calculator.dart` програма калькулятор.
+  - `utils/data_processor.dart` тестування data processor.
+- **`test/`** містить тести:
+  - `models_test.dart` тест 1.
+  - `utils_test.dart` тест 2.
 
 #### Блок-схема виконання (`task1_variables.dart`)
+
 ```mermaid
 graph TD
     Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
@@ -76,12 +79,16 @@ graph TD
 
     Nulls --> End([Кінець програми])
 ```
+
 ---
+
 ## Завдання 2: Змінні, типи даних та функції
+
 ### 2.1. Змінні та типи даних (`task1_variables.dart`)
 
-* **Опис:** Був заповнений файл `bin/task1_variables.dart`, що демонструє роботу зі змінними.
-* **Інструкція:** Відкрити файл `task1_variables.dart`, відкрити термінал, ввести `dart run bin/task1_variables.dart`. Подивитися консоль.
+- **Опис:** Був заповнений файл `bin/task1_variables.dart`, що демонструє роботу зі змінними.
+- **Інструкція:** Відкрити файл `task1_variables.dart`, відкрити термінал, ввести `dart run bin/task1_variables.dart`. Подивитися консоль.
+
 ```mermaid
     Start([Старт: main]) --> M1[Виклик calculateSum 10, 20]
 
@@ -127,3 +134,121 @@ graph TD
     end
 
     FactFib --> End([Кінець програми])
+```
+
+## Завдання 3: ООП - Класи та об'єкти
+
+### Опис: заповнено файл: student.dart, course.dart. Класи демонструють методи та властивості ООП.
+
+Файл student.dart містить клас студента, що має поля:
+
+- final String id;
+- final String firstName;
+- final String lastName;
+- final DateTime birthDate;
+- final List<String> enrolledCourses;
+- final Map<String, double> grades;
+
+З них тільки: id, firstName, lastName, birthDate є обов'язковими.
+Клас має 3 геттера, один об'єднує ім'я та призвище та виводить його, другий виводить вік, третій рахує та виводить середній бал.
+
+Клас має методи:
+
+- enrollInCourse - для додавання курсу.
+- eaddGrade - для додавання оцінки.
+- egetPassedCourses - для отримання курсів де кількість балів >= 60.
+- etoString - перезаписаний метод, що виводить ім'я, призвище, вік та середній бал.
+- etoJson - для шифрування файлу.
+- efromJson - розшифрування з json.
+
+Клас course.dart містить у собі поля:
+
+- String id;
+- String name;
+- String description;
+- int credits;
+- String instructor;
+- List<String> prerequisites;
+  З них усі є обов'язковими, окрім prerequisites.
+
+Клас містить методи:
+
+- canStudentEnroll - вивід усіх значень.
+- toString - вивід значень.
+
+## 3.2 Технічні специфікації Advanced OOP
+
+### Опис: був оновлений файл: university.dart.
+
+Клас Universiti містить поля:
+
+- String name;
+- List<Student> students;
+- List<Professor> professors;
+- List<Course> courses;
+  З них тільки name є обов'язковим.
+
+Клас має методи:
+
+- addStudent - додавання студентів.
+- removeStudent - видалення студентів.
+- findStudentById - знаходження студентів за ID.
+- getStudentsByCourse - отримання студентів з пеного курсу.
+- getAvailableCoursesForStudent - отримання доступних курсів.
+- generateStatistics - отримання оцінок.
+
+#### Файл також містить клас Person, базовий клас для Person що містить бозові поля для класу Professor, який також є у файлі.
+
+Клас Professor має поля:
+
+- String name;
+- List<Student> students;
+- List<Professor> professors;
+- List<Course> courses;
+
+З них тільки name є обов'язковими.
+У класа є 3 геттори для отримання:
+
+- Імені.
+- Грошей.
+- Посади.
+
+graph TD
+%% Ієрархія класів
+subgraph Classes [Ієрархія та Спадкування]
+Person["Abstract Class: Person\n(id, firstName, lastName, birthDate)"] --> Professor["Class: Professor\n(department, taughtCourses, salary)"]
+Professor --> Overrides["Реалізація геттерів:\nfullName, age, role"]
+end
+
+    %% Основний клас University
+    subgraph UniversityClass [Class: University]
+        U_Init["Конструктор University\n(name, students, professors, courses)"]
+
+        %% Методи управління студентами
+        U_Init --> Add["addStudent(Student)\nПеревірка наявності та додавання"]
+        U_Init --> Remove["removeStudent(studentId)\nВидалення за ID"]
+        U_Init --> Find["findStudentById(id)\nПошук студента у циклі"]
+
+        %% Методи фільтрації та логіки
+        U_Init --> ByCourse["getStudentsByCourse(courseId)\nФільтрація за зарахованими курсами"]
+        U_Init --> Available["getAvailableCoursesForStudent(studentId)"]
+
+        %% Логіка getAvailableCoursesForStudent
+        Available --> CheckNull{Студент знайдений?}
+        CheckNull -- Ні --> ReturnEmpty["Повернути порожній список []"]
+        CheckNull -- Так --> FilterCourses["Фільтрація courses:\n1. canStudentEnroll(student)\n2. notEnrolled (немає в enrolledCourses)"]
+
+        %% Статистика
+        U_Init --> Stats["generateStatistics()\nПовертає Map зі статистикою"]
+    end
+    ```
+
+## 4.1 Технічні специфікації Data Processing
+
+### Опис: був оновлений файл,data_processor.dart, файл містить клас DataProcessor що містить:
+
+Метод - static List<int> filterEvenNumbers
+
+- static Map<String, int> countWords(String text)
+- static List<Map<String, dynamic>> sortStudentsByGPA(List<Student> students)
+- static Map<String, List<Student>> groupStudentsByYear(List<Student> students,)final grouped = <String, List<Student>>{};
