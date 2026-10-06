@@ -87,3 +87,61 @@ Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
     end
 
     Nulls -->|Кінець| End([Кінець програми])
+
+    2.2 Технічні специфікації Functions
+
+    Опис: був заповнений файл task2_functions.dart, що демонструє робоу функцій у Dart.
+    Інструкція: відкрити task2_functions.dart, у консолі ввести dart run bin/task2_functions.dart, подивитися у консоль.
+
+    Блоксхема:
+    graph TD
+    %% Старт програми
+    Start([Старт: main]) --> M1[Виклик calculateSum 10, 20]
+
+    %% Блок calculateSum
+    subgraph CalcSum [calculateSum]
+        M1 --> CS1[Друкує суму a + b та повертає її]
+    end
+
+    M1 --> M2[Виклик calculateAverage 10.0, 20.0, 30.0, 40.0]
+
+    %% Блок calculateAverage
+    subgraph CalcAvg [calculateAverage]
+        M2 --> CA1[Рахує суму елементів у циклі]
+        CA1 --> CA2[Ділить на довжину списку]
+        CA2 --> CA3[Друкує та повертає середнє значення]
+    end
+
+    M2 --> M3[Виклик formatName: Іван, Петренко]
+
+    %% Блок formatName
+    subgraph FormatName [formatName]
+        M3 --> FN1[Формує список parts: прізвище, ім'я]
+        FN1 --> FN2{middleName є?}
+        FN2 -- Так --> FN3[Додає middleName до parts]
+        FN2 -- Ні / Після --> FN4[Об'єднує через пробіл]
+        FN4 --> FN5{uppercase == true?}
+        FN5 -- Так --> FN6[Переводить у UPPERCASE]
+        FN5 -- Ні / Після --> FN7[Повертає рядок]
+    end
+
+    M3 --> M4[Виклик formatName з middleName та uppercase]
+    M4 --> M5[Виклик testFunctionalProgramming]
+
+    %% Блок Функціонального програмування
+    subgraph FuncProg [testFunctionalProgramming]
+        M5 --> FP1[Вкладена функція calculate (додавання/множення)]
+        FP1 --> FP2[Колекції: where, map, fold]
+        FP2 --> FP3[Замикання Closure: makeAdder]
+    end
+
+    M5 --> M6[Виклик factorial 4]
+
+    %% Блок factorial та fibonacci
+    subgraph FactFib [factorial та fibonacci]
+        M6 --> F1[Рахує факторіал у цикли від 1 до n]
+        F1 --> F2[Передає результат у fibonacci]
+        F2 --> F3[Виконує формулу n-1 + n-2 та повертає значення]
+    end
+
+    FactFib --> End([Кінець програми])
