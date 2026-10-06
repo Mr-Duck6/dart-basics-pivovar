@@ -167,7 +167,7 @@ graph TD
 - Грошей.
 - Посади.
 
-graph TD
+```mermaid
 %% Ієрархія класів
 subgraph Classes [Ієрархія та Спадкування]
 Person["Abstract Class: Person\n(id, firstName, lastName, birthDate)"] --> Professor["Class: Professor\n(department, taughtCourses, salary)"]
@@ -190,9 +190,10 @@ end
         %% Логіка getAvailableCoursesForStudent
         Available --> CheckNull{Студент знайдений?}
         CheckNull -- Ні --> ReturnEmpty["Повернути порожній список []"]
+        
         CheckNull -- Так --> FilterCourses["Фільтрація courses:\n1. canStudentEnroll(student)\n2. notEnrolled (немає в enrolledCourses)"]
 
         %% Статистика
         U_Init --> Stats["generateStatistics()\nПовертає Map зі статистикою"]
     end
-    ```
+```
