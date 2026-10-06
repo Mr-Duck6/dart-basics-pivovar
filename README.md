@@ -1,42 +1,34 @@
-Практична робота 4: Основи мови Dart
+# Практична робота 4: Основи мови Dart
 
-Завдання 1: Налаштування проекту та основи
-синтаксису.
+## Завдання 1: Налаштування проекту та основи синтаксису
+### Опис структури проекту
+Була створена структура проекту, яка містить:
 
-Опис: була створена структура проекту, яка містить:
 ![alt text](image.png)
 
-README.md - опис завдань, інструкції.
-pubspec.yaml - технічне налаштування проекту.
-bin - містить завдання 1-5.
-task1_variables.dart - завдання 1.
-task2_functions.dart - завдання 2.
-task3_classes.dart - завдання 3.
-task4_collections.dart - завдання 4.
-task5_async.dart - завдання 5.
-lib - містить папку models.
-models - містить файли з класами.
-student.dart - клас студента.
-course.dart - клас курсів.
-university.dart - клас університету (також містить клас професора, та базовий клас людини).
-utils - містить у собі програми.
-calculator.dart - програма калькулятор.
-data_processor.dart - тестування data processor.
-test - містить тести.
-models_test.dart - тест 1.
-utils_test.dart - тест 2.
+* **`README.md`**  опис завдань, інструкції.
+* **`pubspec.yaml`**  технічне налаштування проекту.
+* **`bin/`**  містить завдання 1-5:
+  * `task1_variables.dart`  завдання 1.
+  * `task2_functions.dart`  завдання 2.
+  * `task3_classes.dart`  завдання 3.
+  * `task4_collections.dart`  завдання 4.
+  * `task5_async.dart`  завдання 5.
+* **`lib/`**  містить папку `models/` та `utils/`:
+  * `models/student.dart`  клас студента.
+  * `models/course.dart`  клас курсів.
+  * `models/university.dart`  клас університету (також містить клас професора та базовий клас людини).
+  * `utils/calculator.dart`  програма калькулятор.
+  * `utils/data_processor.dart`  тестування data processor.
+* **`test/`**  містить тести:
+  * `models_test.dart`  тест 1.
+  * `utils_test.dart`  тест 2.
 
-Завдання 2: Змінні, типи даних та функції
-
-Опис: був заповнений файл // bin/task1_variables.dart, що демонструє роботу зі змінними.
-Інструкція: відкрити файл task1_variables.dart, відкрити термінал, ввести dart run bin/task1_variables.dart. Подивитися консоль.
-
-Блоксхема:
+#### Блок-схема виконання (`task1_variables.dart`)
+```mermaid
 graph TD
-%% Головна точка входу
-Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
+    Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
 
-    %% Блок Numbers
     subgraph Numbers [demonstrateNumbers]
         Nums --> N1[Ініціалізація int = 5, double = 5.5]
         N1 --> N2[Математичні операції & print]
@@ -48,7 +40,6 @@ Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
 
     Nums -->|Кінець| Strs[Виклик demonstrateStrings]
 
-    %% Блок Strings
     subgraph Strings [demonstrateStrings]
         Strs --> S1[Ініціалізація рядків]
         S1 --> S2[Інтерполяція та конкатенація]
@@ -59,7 +50,6 @@ Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
 
     Strs -->|Кінець| Bools[Виклик demonstrateBooleans]
 
-    %% Блок Booleans
     subgraph Booleans [demonstrateBooleans]
         Bools --> B1[Ініціалізація integer1 та isboolornot = false]
         B1 --> B2{isboolornot == true?}
@@ -70,15 +60,13 @@ Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
 
     Bools -->|Кінець| Cols[Виклик demonstrateCollections]
 
-    %% Блок Collections
     subgraph Collections [demonstrateCollections]
         Cols --> C1[Створення List & додавання елемента]
-        C1 --> C2[Створення Set (унікальні значення) & додавання]
+        C1 --> C2[Створення Set унікальні значення & додавання]
     end
 
     Cols -->|Кінець| Nulls[Виклик demonstrateNullSafety]
 
-    %% Блок Null Safety
     subgraph NullSafety [demonstrateNullSafety]
         Nulls --> NS1[Nullable int та String: int? b, String? hello]
         NS1 --> NS2[Безпечне звернення: hello?.length]
@@ -86,26 +74,23 @@ Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
         NS3 --> NS4[Пізня ініціалізація: late String name]
     end
 
-    Nulls -->|Кінець| End([Кінець програми])
+    Nulls --> End([Кінець програми])
+```
+---
+## Завдання 2: Змінні, типи даних та функції
+### 2.1. Змінні та типи даних (`task1_variables.dart`)
 
-    2.2 Технічні специфікації Functions
-
-    Опис: був заповнений файл task2_functions.dart, що демонструє робоу функцій у Dart.
-    Інструкція: відкрити task2_functions.dart, у консолі ввести dart run bin/task2_functions.dart, подивитися у консоль.
-
-    Блоксхема:
-    graph TD
-    %% Старт програми
+* **Опис:** Був заповнений файл `bin/task1_variables.dart`, що демонструє роботу зі змінними.
+* **Інструкція:** Відкрити файл `task1_variables.dart`, відкрити термінал, ввести `dart run bin/task1_variables.dart`. Подивитися консоль.
+```mermaid
     Start([Старт: main]) --> M1[Виклик calculateSum 10, 20]
 
-    %% Блок calculateSum
     subgraph CalcSum [calculateSum]
         M1 --> CS1[Друкує суму a + b та повертає її]
     end
 
     M1 --> M2[Виклик calculateAverage 10.0, 20.0, 30.0, 40.0]
 
-    %% Блок calculateAverage
     subgraph CalcAvg [calculateAverage]
         M2 --> CA1[Рахує суму елементів у циклі]
         CA1 --> CA2[Ділить на довжину списку]
@@ -114,7 +99,6 @@ Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
 
     M2 --> M3[Виклик formatName: Іван, Петренко]
 
-    %% Блок formatName
     subgraph FormatName [formatName]
         M3 --> FN1[Формує список parts: прізвище, ім'я]
         FN1 --> FN2{middleName є?}
@@ -128,20 +112,20 @@ Start([Старт: main]) --> Nums[Виклик demonstrateNumbers]
     M3 --> M4[Виклик formatName з middleName та uppercase]
     M4 --> M5[Виклик testFunctionalProgramming]
 
-    %% Блок Функціонального програмування
     subgraph FuncProg [testFunctionalProgramming]
-        M5 --> FP1[Вкладена функція calculate (додавання/множення)]
+        M5 --> FP1[Вкладена функція calculate додавання/множення]
         FP1 --> FP2[Колекції: where, map, fold]
         FP2 --> FP3[Замикання Closure: makeAdder]
     end
 
     M5 --> M6[Виклик factorial 4]
 
-    %% Блок factorial та fibonacci
     subgraph FactFib [factorial та fibonacci]
-        M6 --> F1[Рахує факторіал у цикли від 1 до n]
+        M6 --> F1[Рахує факторіал у циклі від 1 до n]
         F1 --> F2[Передає результат у fibonacci]
         F2 --> F3[Виконує формулу n-1 + n-2 та повертає значення]
     end
 
     FactFib --> End([Кінець програми])
+  ```
+
