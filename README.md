@@ -128,3 +128,71 @@ graph TD
     end
 
     FactFib --> End(["Кінець програми"])
+```
+
+## 3.2 Технічні специфікації Advanced OOP
+
+### Опис: був оновлений файл: university.dart.
+
+Клас Universiti містить поля:
+
+- String name;
+- List<Student> students;
+- List<Professor> professors;
+- List<Course> courses;
+  З них тільки name є обов'язковим.
+
+Клас має методи:
+
+- addStudent - додавання студентів.
+- removeStudent - видалення студентів.
+- findStudentById - знаходження студентів за ID.
+- getStudentsByCourse - отримання студентів з пеного курсу.
+- getAvailableCoursesForStudent - отримання доступних курсів.
+- generateStatistics - отримання оцінок.
+
+#### Файл також містить клас Person, базовий клас для Person що містить бозові поля для класу Professor, який також є у файлі.
+
+Клас Professor має поля:
+
+- String name;
+- List<Student> students;
+- List<Professor> professors;
+- List<Course> courses;
+
+З них тільки name є обов'язковими.
+У класа є 3 геттори для отримання:
+
+- Імені.
+- Грошей.
+- Посади.
+
+graph TD
+%% Ієрархія класів
+subgraph Classes [Ієрархія та Спадкування]
+Person["Abstract Class: Person\n(id, firstName, lastName, birthDate)"] --> Professor["Class: Professor\n(department, taughtCourses, salary)"]
+Professor --> Overrides["Реалізація геттерів:\nfullName, age, role"]
+end
+
+    %% Основний клас University
+    subgraph UniversityClass [Class: University]
+        U_Init["Конструктор University\n(name, students, professors, courses)"]
+
+        %% Методи управління студентами
+        U_Init --> Add["addStudent(Student)\nПеревірка наявності та додавання"]
+        U_Init --> Remove["removeStudent(studentId)\nВидалення за ID"]
+        U_Init --> Find["findStudentById(id)\nПошук студента у циклі"]
+
+        %% Методи фільтрації та логіки
+        U_Init --> ByCourse["getStudentsByCourse(courseId)\nФільтрація за зарахованими курсами"]
+        U_Init --> Available["getAvailableCoursesForStudent(studentId)"]
+
+        %% Логіка getAvailableCoursesForStudent
+        Available --> CheckNull{Студент знайдений?}
+        CheckNull -- Ні --> ReturnEmpty["Повернути порожній список []"]
+        CheckNull -- Так --> FilterCourses["Фільтрація courses:\n1. canStudentEnroll(student)\n2. notEnrolled (немає в enrolledCourses)"]
+
+        %% Статистика
+        U_Init --> Stats["generateStatistics()\nПовертає Map зі статистикою"]
+    end
+    ```
