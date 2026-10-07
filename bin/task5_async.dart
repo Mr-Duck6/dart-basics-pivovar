@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
-import 'dart:js_interop';
+
 
 import 'package:dart_basics_pivovar/models/student.dart';
 
